@@ -1,0 +1,20 @@
+http://www.morethantechnical.com/2011/08/25/a-simple-object-classifier-with-bag-of-words-using-opencv-2-3-w-code/
+
+The method is simple:
+- Extract features of choice from training set that contains all classes.
+- Create a vocabulary of features by clustering the features (kNN, etc). Let's say 1000 features long.
+- Train your classifiers (SVMs, Naive-Bayes, boosting, etc) on training set again (preferably a different one), this time check the features in the image for their closest clusters in the vocabulary. Create a histogram of responses for each image to words in the vocabulary, it will be a 1000-entries long vector. Create a sample-label dataset for the training.
+- When you get an image you havn't seen - run the classifier and it should, god willing, give you the right class.
+
+http://ttic.uchicago.edu/~mostajabi/Tutorial.html
+
+Bags of visual words is derived from well known algortihm in document classification that called Bags of words. It plays the role of dictionary. some keypoints are defined from training phase and compose bags of words. it is as easy as performing Vector Quantization on feature space. Number of centroids is a number of words in dictionary. when new keypoint is extracted from an input image it will be assigned to a nearest keypoint in dictionary, so an output of this stage is histogram of assigned keypoints in an input image to nearest keypoints in the dictionary.
+any type of classifiers such as SVM, Naive Bays calssifier and ... can be trained using the histograms that are gained from previous stage.
+
+http://docs.opencv.org/modules/features2d/doc/object_categorization.html
+https://gilscvblog.wordpress.com/2013/08/23/bag-of-words-models-for-visual-categorization/
+http://www.aishack.in/tutorials/kmeans-clustering-in-opencv/
+http://stackoverflow.com/questions/27383764/performing-kmeans-on-a-train-set-of-images-and-sift-descriptors
+http://www.codeproject.com/Articles/619039/Bag-of-Features-Descriptor-on-SIFT-Features-with-O
+http://answers.opencv.org/question/17460/how-to-use-bag-of-words-example-with-brief-descriptors/
+https://www.google.com.br/?gws_rd=ssl#q=opencv+sift+kmeans

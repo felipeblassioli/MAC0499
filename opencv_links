@@ -1,0 +1,68 @@
+FeatureDetector
+
+- has detect
+
+The following detector types are supported:
+
+    "FAST" – FastFeatureDetector
+    "STAR" – StarFeatureDetector
+    "SIFT" – SIFT (nonfree module)
+    "SURF" – SURF (nonfree module)
+    "ORB" – ORB
+    "BRISK" – BRISK
+    "MSER" – MSER
+    "GFTT" – GoodFeaturesToTrackDetector
+    "HARRIS" – GoodFeaturesToTrackDetector with Harris detector enabled
+    "Dense" – DenseFeatureDetector
+    "SimpleBlob" – SimpleBlobDetector
+
+Also a combined format is supported: feature detector adapter name ( "Grid" – GridAdaptedFeatureDetector, "Pyramid" – PyramidAdaptedFeatureDetector ) + feature detector name (see above), for example: "GridFAST", "PyramidSTAR" .
+# http://docs.opencv.org/modules/features2d/doc/common_interfaces_of_feature_detectors.html#featuredetector
+
+# http://docs.opencv.org/modules/features2d/doc/common_interfaces_of_descriptor_extractors.html
+DescriptorExtractor
+
+- has compute
+
+The current implementation supports the following types of a descriptor extractor:
+
+        "SIFT" – SIFT
+        "SURF" – SURF
+        "BRIEF" – BriefDescriptorExtractor
+        "BRISK" – BRISK
+        "ORB" – ORB
+        "FREAK" – FREAK
+
+A combined format is also supported: descriptor extractor adapter name ( "Opponent" – OpponentColorDescriptorExtractor ) + descriptor extractor name (see above), for example: "OpponentSIFT" .
+
+# http://docs.opencv.org/modules/features2d/doc/common_interfaces_of_descriptor_matchers.html
+
+Matchers of keypoint descriptors in OpenCV have wrappers with a common interface that enables you to easily switch between different algorithms solving the same problem. This section is devoted to matching descriptors that are represented as vectors in a multidimensional space. All objects that implement vector descriptor matchers inherit the DescriptorMatcher interface.
+
+struct DMatch
+
+Class for matching keypoint descriptors: query descriptor index, train descriptor index, train image index, and distance between descriptors.
+
+struct DMatch
+{
+    DMatch() : queryIdx(-1), trainIdx(-1), imgIdx(-1),
+               distance(std::numeric_limits<float>::max()) {}
+    DMatch( int _queryIdx, int _trainIdx, float _distance ) :
+            queryIdx(_queryIdx), trainIdx(_trainIdx), imgIdx(-1),
+            distance(_distance) {}
+    DMatch( int _queryIdx, int _trainIdx, int _imgIdx, float _distance ) :
+            queryIdx(_queryIdx), trainIdx(_trainIdx), imgIdx(_imgIdx),
+            distance(_distance) {}
+
+    int queryIdx; // query descriptor index
+    int trainIdx; // train descriptor index
+    int imgIdx;   // train image index
+
+    float distance;
+
+    // less is better
+    bool operator<( const DMatch &m ) const;
+};
+
+# https://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_ml/py_svm/py_svm_opencv/py_svm_opencv.html#svm-opencv
+http://stackoverflow.com/questions/8687885/python-opencv-svm-implementation
