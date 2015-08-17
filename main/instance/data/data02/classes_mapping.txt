@@ -1,0 +1,3 @@
+01 Chuteira
+03 Chinelo
+02 Bota

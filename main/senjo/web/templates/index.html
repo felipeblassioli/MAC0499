@@ -1,13 +1,189 @@
-<h1>Hello World</h1>
+<html>
+	<head>
+		<title>MAC0499 - Shoe classifiers</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-{% for e in experiments %}
-	{{ e['name'] }}
-	{{ e['algorithm_name'] }}
-	{% for filename, label in e['test_dataset'] %}
-		<img src={{ url_for('download_image', filename=filename) }} />
-	{% endfor %}
-	<h2>xx</h2>
-	{% for k,v in e['extras'].items() %}
-		{{ k }} {{ v }} <br />
-	{% endfor %}
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<style media="screen">
+			#container {
+				width: 100%;
+			}
+			.experiment {
+				margin-left: 16px;
+				display: inline-block;
+				width: 100%;
+				vertical-align: top;
+			}
+			.sample-box {
+				width: 25%;
+				display: inline-block;
+			}
+			.predictions-box {
+				margin-bottom: 16px;
+				width: 48%;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.prediction-item {
+				margin-bottom: 8px;
+				display: inline-block;
+			}
+			.prediction-item.right {
+				background-color: green;
+			}
+			.prediction-item.wrong {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+<body>
+
+{% for d in datasets %}
+	{{ d['name'] }}
 {% endfor %}
+
+<div class="container-fluid">
+{% for e in experiments %}
+	<div class="experiment">
+		<h1>{{ e['name'] }}</h1>
+
+		<div style="width: 60%; display: inline-block;">
+			<table class="table table-bordered">
+				<tr>
+					<th>Algorithm Name</th>
+					<td>{{ e['algorithm_name'] }}</td>
+				</tr>
+				<tr>
+					<th>Training Dataset</th>
+					<td>{{ e['training_dataset']['name'] }}</td>
+				</tr>
+				<tr>
+					<th>Test Dataset</th>
+					<td>{{ e['test_dataset']['name'] }}</td>
+				</tr>
+				<tr>
+					<th>Feature Detector</th>
+					<td>{{ e['extras']['feature_detector_instance'] }}</td>
+				</tr>
+				<tr>
+					<th>Descriptor</th>
+					<td>{{ e['extras']['descriptor_extractor_instance'] }}</td>
+				</tr>
+				<tr>
+					<th>Clusterizer</th>
+					<td>{{ e['extras']['clusterizer_instance'] }}</td>
+				</tr>
+				<tr>
+					<th>BOW Descriptor</th>
+					<td>{{ e['extras']['bow_descriptor_extractor_instance'] }}</td>
+				</tr>
+				<tr>
+					<th>Classifier</th>
+					<td>{{ e['extras']['classifier_instance'] }}</td>
+				</tr>
+			</table>
+		</div>
+
+		<h1>Results</h1>
+
+		<div style="width: 240px; display: inline-block;">
+			<h3>Class Map</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Index</th>
+						<th>Label</th>
+						<th>total</th>
+					</tr>
+				</thead>
+			{% for idx, label in e['training_dataset']['categories'] %}
+				<tr>
+					<td>{{ idx }}</td>
+					<td>{{ label }}</td>
+					<td>{{ e['samples']['2.0']['total'] }}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+
+		<div style="width: 300px; display: inline-block;">
+			<h3>Confusion Matrix</h3>
+			<table class="table table-bordered">
+			{% for r in e['confusion_matrix'] %}
+				<tr>
+				{%  for c in r %}
+					<td> {{ c }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+
+		<br />
+
+		{% for label, samples_group in e['samples'].items() %}
+			<div class="sample-box">
+				<h2>label {{ label }}</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>{{ samples_group['TP'] }} true positives</td>
+						<td>{{ samples_group['FP'] }} false positives</td>
+					</tr>
+					<tr>
+						<td>{{ samples_group['FN'] }} false negatives</td>
+						<td>{{ samples_group['TN'] }} true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> {{ '%.2f' % (samples_group['statistics']['PPV'] * 100) }}%
+				<strong>Recall:</strong> {{ '%.2f' % (samples_group['statistics']['TPR'] * 100) }}%
+
+				<table class="table table-bordered">
+					{% for k,v in samples_group['statistics'].items() %}
+						<tr>
+							<th>{{ k }}</th>
+							<td>{{ v }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				{% for img_path, prediction in samples_group['data'] %}
+					{% if label == prediction %}
+					<div class="prediction-item {% if label == prediction %}right{% else %}wrong{% endif %}">
+						{{ label }} vs {{ prediction }} <br />
+						<img src="{{ url_for('download_image', filename=img_path) }}"
+							style="height: 100px;" />
+					</div>
+					{% endif %}
+				{% endfor %}
+				</div>
+				<div class="predictions-box">
+				{% for img_path, prediction in samples_group['data'] %}
+					{% if label != prediction %}
+					<div class="prediction-item {% if label == prediction %}right{% else %}wrong{% endif %}">
+						{{ label }} vs {{ prediction }} <br />
+						<img src="{{ url_for('download_image', filename=img_path) }}"
+							style="height: 100px;" />
+					</div>
+					{% endif %}
+				{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+{% endfor %}
+</div>
+
+</body>
+</html>

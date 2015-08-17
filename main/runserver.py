@@ -1,4 +1,4 @@
-from senjo import create_app
+from senjo.web import create_app
 
 app = create_app()
 

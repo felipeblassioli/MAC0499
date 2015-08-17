@@ -8,34 +8,95 @@ import os
 from stuff import *
 from .helpers import DefaultJSONEncoder
 from .cache import Cache
+
 class ExperimentResultWrapper(object):
 	def __init__(self, training_dataset, test_dataset, algorithm_name, samples, labels, predictions, extras=None):
 		self.training_dataset = training_dataset
 		self.test_dataset = test_dataset
 		self.algorithm_name = algorithm_name
+		self.samples = samples
 		self.labels = labels
 		self.predictions = predictions
 		self.extras = extras
 
 		err = (labels != predictions).mean()
 		print 'error: %.2f %%' % (err*100)
+		self.error = err
 
-		confusion = np.zeros((2, 2), np.int32)
+		n = len(test_dataset.categories)
+		print test_dataset.categories
+		confusion = np.zeros((n,n), np.int32)
 		for i, j in zip(labels, predictions):
 			i,j = int(i)-1, int(j)-1
 			confusion[i,j] += 1
+		self.confusion_matrix = confusion
 		print 'confusion matrix:'
 		print confusion
 		print
 		#print np.mean(samples
+	def _group_samples_by_category(self):
+		import math
+		from collections import defaultdict
+		categories = self.training_dataset.categories
+		def _bla():
+			res = dict()
+			res['total'] = 0
+			res['TP'] = 0
+			res['TN'] = 0
+			res['FP'] = 0
+			res['FN'] = 0
+			res['data'] = []
+			return res
+		_samples = defaultdict(_bla)
+		for img_path, label, prediction in zip(self.samples, self.labels.ravel(), self.predictions.ravel()):
+			label, prediction = str(label), str(prediction)
+			row = (img_path, prediction)
+			_samples[label]['total'] += 1
+			if label != prediction:
+				_samples[prediction]['FP'] += 1
+				_samples[label]['FN'] += 1
+			else:
+				_samples[label]['TP'] += 1
+			_samples[label]['data'].append(row)
+
+		for k,v in _samples.items():
+			_samples[k]['TN'] = _samples[k]['total'] - sum([ v for v in _samples[k].values() if k in ['TP','FP','FN']])
+			TP = float(_samples[k]['TP'])
+			FP = float(_samples[k]['FP'])
+			TN = float(_samples[k]['TN'])
+			FN = float(_samples[k]['FN'])
+			_samples[k]['statistics'] = dict(
+				#sensitivity or true positive rate (TPR)
+				TPR=TP/(TP+FN),
+				# specificity (SPC) or true negative rate (TNR)
+				TNR=TN/(FP+TN),
+				# precision or positive predictive value (PPV)
+				PPV=TP/(TP+FP),
+				# negative predictive value (NPV)
+				NPV=TN/(TN+FN),
+				# fall-out or false positive rate (FPR)
+				FPR=FP/(FP+TN),
+				# false discovery rate (FDR)
+				FDR=FP/(FP+TP),
+				# miss rate or false negative rate (FNR)
+				FNR=FN/(FN+TP),
+				# https://en.wikipedia.org/wiki/Accuracy_and_precision
+				ACC=(TP+TN)/(TP+FP+FN+TN),
+				# https://en.wikipedia.org/wiki/F1_score
+				F1=2*TP/(2*TP+FP+FN),
+				# https://en.wikipedia.org/wiki/Matthews_correlation_coefficient
+				MCC=((TP*TN)-(FP*FN))/math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
+			)
+		return _samples
 
 	def to_json(self):
 		return dict(
 			algorithm_name=self.algorithm_name,
 			training_dataset=self.training_dataset,
 			test_dataset=self.test_dataset,
-			labels=self.labels,
-			predictions=self.predictions,
+			samples=self._group_samples_by_category(),
+			error=self.error,
+			confusion_matrix=self.confusion_matrix,
 			extras=self.extras
 		)
 
@@ -62,17 +123,39 @@ class ExperimentResultWrapper(object):
 			import json
 			json.dump(self, fp, cls=DefaultJSONEncoder)
 
-class Experiment(object):
-	def load_dataset(self, dataset_root_dir):
+class Dataset(object):
+	def __init__(self, dataset_root_dir, name=None):
 		import os
 		dataset = []
 		# directory's names are category labels
 		for category in os.listdir(dataset_root_dir):
 			category_dir = os.path.join(dataset_root_dir, category)
-			for filename in os.listdir(category_dir):
-				file_path = os.path.join(category_dir, filename)
-				dataset.append((file_path, [float(category)]))
-		return dataset
+			if os.path.isdir(category_dir):
+				for filename in os.listdir(category_dir):
+					file_path = os.path.join(category_dir, filename)
+					dataset.append((file_path, [float(category)]))
+
+		mapping_file = os.path.join(dataset_root_dir, 'classes_mapping.txt')
+		with open(mapping_file, 'rb') as fp:
+			self.categories = [ tuple([ x.strip() for x in line.split(' ')]) for line in fp ]
+
+		self._data = dataset
+		self.name = name or dataset_root_dir
+
+	def __iter__(self):
+		for x in self._data:
+			yield x
+
+	def to_json(self):
+		return dict(
+			name=self.name,
+			categories=self.categories,
+			data=self._data
+		)
+
+class Experiment(object):
+	def load_dataset(self, dataset_root_dir):
+		return Dataset(dataset_root_dir)
 
 	def _prepare(self,
 			training_dataset=None,
@@ -132,7 +215,9 @@ class Experiment(object):
 
 		logger.info('testing end.')
 
-		result = self.make_result(samples, labels, predictions)
+		#_samples = zip(self.params['test_dataset'], samples)
+		#print _samples
+		result = self.make_result([ img_path for img_path, _ in self.params['test_dataset'] ], labels, predictions)
 
 		logger.info('experiment end.\n')
 		return result

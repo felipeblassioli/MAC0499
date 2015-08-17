@@ -39,37 +39,13 @@ def main():
 
 EXPERIMENTS = [
 	VanillaExperiment(
-		'instance/data/data01',
-		'instance/data/data01-tr',
-		algorithm_name='SURF',
-		cluster_count=8,
-		visual_dictionary_filename='bla',
-		svm_filename='ble'
-	),
-	VanillaExperiment(
-		'instance/data/data01',
-		'instance/data/data01-tr',
-		algorithm_name='SIFT',
-		cluster_count=8,
-		visual_dictionary_filename='bla-sift',
-		svm_filename='ble-sift'
-	),
-	VanillaExperiment(
-		'instance/data/data01',
-		'instance/data/data01-tr',
-		algorithm_name='SIFT',
-		cluster_count=32,
-		visual_dictionary_filename='bla-sift2',
-		svm_filename='ble-sift2'
-	),
-	VanillaExperiment(
-		'instance/data/data01',
+		'instance/data/data02',
 		'instance/data/data02-tr',
 		algorithm_name='SURF',
 		cluster_count=8,
-		visual_dictionary_filename='bla-surf2',
-		svm_filename='ble-surf2'
-	),
+		visual_dictionary_filename='surf2',
+		svm_filename='surf2'
+	)
 ]
 
 import os
