@@ -16,7 +16,7 @@
 			.experiment {
 				margin-left: 16px;
 				display: inline-block;
-				width: 100%;
+				width: 49%;
 				vertical-align: top;
 			}
 			.sample-box {
@@ -48,7 +48,7 @@
 	{{ d['name'] }}
 {% endfor %}
 
-<div class="container-fluid">
+<div id="container">
 {% for e in experiments %}
 	<div class="experiment">
 		<h1>{{ e['name'] }}</h1>
