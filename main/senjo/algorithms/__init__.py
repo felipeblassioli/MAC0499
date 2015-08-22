@@ -41,3 +41,35 @@ class SVM(object):
 
 	def to_json(self):
 		return dict(params=self.svm_params)
+
+from grabed import grabed, default_border_extractor
+class GRABED(object):
+	def __init__(self, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=default_border_extractor, output_file=None):
+		self.scales = scales
+		self.f = f
+		self.max_axis = max_axis
+		self.l0 = l0
+		self.r = r
+		self.border_extractor = border_extractor
+		self.output_file = output_file
+
+	def compute(self, image_path):
+		img = cv2.imread(image_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+		desc = grabed(img, self.scales, self.f, self.max_axis, self.l0, self.r, self.border_extractor, self.output_file)
+		return np.float32(desc)
+
+class BOWImgDescriptorExtractor(object):
+	def __init__(self, extractor, matcher, feature_detector_instance=None):
+		self.feature_detector_instance = feature_detector_instance or cv2.FeatureDetector_create('Dense')
+		self.descriptor_extractor = cv2.BOWImgDescriptorExtractor(extractor, matcher)
+
+	def setVocabulary(visual_dictionary):
+		self.descriptor_extractor.setVocabulary(visual_dictionary)
+
+	def compute(self, img_path):
+		img = cv2.imread(img_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+
+		kp = self.feature_detector_instance.detect(img)
+		desc = classifier_descriptor_extractor_instance.compute(img, kp)
+
+		return np.float32(desc)

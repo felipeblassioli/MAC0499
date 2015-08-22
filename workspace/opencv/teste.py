@@ -95,7 +95,7 @@ def default_border_extractor(img):
 	#img = (255-img)
 	return img
 
-def grabed(img, scales=1, f=0.5, max_axis=128, l0=2, r=16, border_extractor=default_border_extractor, output_file=None):
+def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=default_border_extractor, output_file=None):
 	def _get_ee_families():
 		from collections import defaultdict
 		from operator import itemgetter
@@ -142,8 +142,9 @@ def grabed(img, scales=1, f=0.5, max_axis=128, l0=2, r=16, border_extractor=defa
 	return ps
 
 img_path = 'image_0003.jpg'
+#img_path = 'not_so_similar.jpg'
 img = cv2.imread(img_path, cv2.CV_LOAD_IMAGE_GRAYSCALE) 
 img = default_border_extractor(img)
 
-print grabed(img, output_file='bla.jpg')
+print grabed(img, output_file='bla2.jpg')
 

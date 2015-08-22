@@ -228,7 +228,6 @@ class Experiment(object):
 			for img_path, img_categories in training_dataset:
 				desc = descriptor_extractor_instance.compute(img_path)
 				training_data.append(desc)
-				print desc.shape
 				labels.append(img_categories[0])
 
 			training_data = np.vstack(training_data)
@@ -264,8 +263,8 @@ class Experiment(object):
 		labels = np.vstack([ categories[0] for _, categories in test_dataset ])
 		return (samples, labels)
 
-	def make_result(self, name, training_dataset, test_dataset, samples, labels, predictions):
-		return ExperimentResultWrapper(name, training_dataset, test_dataset, samples, labels, predictions)
+	def make_result(self, name, training_dataset, test_dataset, samples, labels, predictions, extras=None):
+		return ExperimentResultWrapper(name, training_dataset, test_dataset, samples, labels, predictions, extras)
 
 	def load_dataset(self, dataset_root_dir):
 		import six
@@ -274,3 +273,6 @@ class Experiment(object):
 		else:
 			# assume it is a loaded dataset
 			return dataset_root_dir
+
+import bagofwords
+BOWExperiment = bagofwords.BOWExperiment

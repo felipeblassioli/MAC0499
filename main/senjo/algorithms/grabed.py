@@ -3,7 +3,6 @@ import math
 import numpy as np
 
 def line(x0,y0,x1,y1):
-	print 'line from (%d,%d) to (%d,%d)' % (x0,y0,x1,y1)
 	dx = x1 - x0
 	dy = y1 - y0
 	eps = 0
@@ -17,7 +16,6 @@ def line(x0,y0,x1,y1):
 			eps -= dx
 
 def line2(x0,y0,x1,y1):
-	print 'line2 from (%d,%d) to (%d,%d)' % (x0,y0,x1,y1)
 	dx = x1 - x0
 	dy = y1 - y0
 	eps = 0
@@ -110,7 +108,7 @@ def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=defa
 		for a, ee_group in EE_families:
 			ee_group.sort(key=itemgetter(0))
 		return EE_families
-	print 'grabed', scales, f, max_axis, l0, r, border_extractor
+	#print 'grabed', scales, f, max_axis, l0, r, border_extractor
 	ps = []
 	for s in xrange(1,scales+1):
 		ir = cv2.resize(img, (0,0), fx=f, fy=f)
@@ -133,7 +131,7 @@ def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=defa
 
 				prev_area = tmp_area
 				_stack.append(io)
-			print 'acc',acc
+			#print 'acc',acc
 
 			_vstack.append(np.hstack(_stack))
 		if output_file is not None:
@@ -141,9 +139,11 @@ def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=defa
 			print 'written', output_file
 	return ps
 
+'''
 img_path = 'image_0003.jpg'
 #img_path = 'not_so_similar.jpg'
 img = cv2.imread(img_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 img = default_border_extractor(img)
 
 print grabed(img, output_file='bla2.jpg')
+'''

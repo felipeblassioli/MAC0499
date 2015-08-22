@@ -1,52 +1,35 @@
-import logging
-logger = logging.getLogger('senjo')
-# create console handler and set level to debug
-#ch = logging.StreamHandler()
-#ch.setLevel(logging.DEBUG)
-#logger.addHandler(ch)
-logger.setLevel(logging.INFO)
+from senjo.experiments import Experiment, BOWExperiment
 
-from senjo.experiment import *
+from senjo.algorithms import GRABED, SIFT
+class GRABEDExperiment(Experiment):
+	@property
+	def descriptor_extractor(self):
+		return GRABED()
 
-def main():
-	training_dataset = 'data/data01'
-	test_dataset = 'data/data01-tr'
-	ALGORITHMS = ['SIFT', 'SURF' ]
-	CLUSTER_COUNTS = [2,4,8,10,16,32,50,100,120]
+import cv2
+class SIFTBOWExperiment(BOWExperiment):
+	@property
+	def feature_detector(self):
+		return cv2.FeatureDetector_create('Dense')
 
-	def gen_experiments():
-		i = 0
-		for cc in CLUSTER_COUNTS:
-			for an in ALGORITHMS:
-				args = [ training_dataset, test_dataset ]
-				kwargs = dict(
-					algorithm_name = an,
-					cluster_count=cc,
-					visual_dictionary_filename='cc-vocabulary-%d' % i,
-					svm_filename='cc-svm-%d' % i
-				)
-				print 'FEATURE_DETECTOR', an
-				print 'CLUSTER_COUNT', cc
-				yield experiment_vanilla(*args, **kwargs)
-				i += 1
-
-	experiments = gen_experiments()
-	for params in experiments:
-		run(**params)
-		print '--------------------------------'
-
-
+	@property
+	def descriptor_extractor(self):
+		return cv2.DescriptorExtractor_create('SIFT')
+		#return SIFT()
 
 EXPERIMENTS = [
-	VanillaExperiment(
-		'instance/data/data02',
-		'instance/data/data02-tr',
-		algorithm_name='SURF',
-		cluster_count=8,
-		visual_dictionary_filename='surf2',
-		svm_filename='surf2'
-	)
+	#Experiment('instance/data/food', 'instance/data/food-tr')
+	GRABEDExperiment('instance/data/data01', 'instance/data/data01-tr'),
+	GRABEDExperiment('instance/data/data02', 'instance/data/data02-tr'),
+	SIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr'),
 ]
+
+import logging
+logger = logging.getLogger('senjo')
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+logger.addHandler(ch)
 
 import os
 experiments_dir = 'instance/experiments'
@@ -59,6 +42,6 @@ for i,exp in enumerate(EXPERIMENTS):
 
 	res = exp.run(name=experiment_name, output_dir=output_dir)
 
-	filename = '%s.json' % experiment_name
+	filename = 'result-%s.json' % experiment_name
 	result_filepath = os.path.join(experiments_dir, filename)
 	res.save(result_filepath)
