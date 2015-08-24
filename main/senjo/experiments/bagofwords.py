@@ -43,7 +43,7 @@ class BOWExperiment(Experiment):
 		setVocabulary(visual_dictionary)
 		compute(image_path) -> descriptor
 		"""
-		return BOWImgDescriptorExtractor(self.descriptor_extractor, self.descriptor_matcher, self.feature_detector)
+		return BOWImgDescriptorExtractor(self.descriptor_extractor, self.descriptor_matcher)
 
 	def build_visual_dictionary(self, training_dataset, descriptor_extractor_instance, clusterizer_instance, visual_dictionary_file, output_dir):
 		visual_dictionary_file = os.path.join(output_dir, visual_dictionary_file)
@@ -60,10 +60,10 @@ class BOWExperiment(Experiment):
 
 		for image_path, _ in training_dataset:
 			logger.debug('extracting feature vector of %s' % image_path)
-			descriptor_extractor_instance.compute(image_path)
-			features_unclustered.append(desc)
+			desc = descriptor_extractor_instance.compute(image_path)
+			features_unclustered.extend(desc)
 
-		features_unclustered = np.vstack(desc)
+		features_unclustered = np.vstack(features_unclustered)
 		visual_dictionary = clusterizer_instance.cluster(features_unclustered)
 
 		logger.debug('Saving visual_dictionary to %s ... ' % visual_dictionary_file)

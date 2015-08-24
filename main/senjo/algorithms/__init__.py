@@ -2,17 +2,28 @@
 import cv2
 import numpy as np
 
-class SIFT(object):
-	def __init__(self):
-		self.feature_detector_instance = cv2.FeatureDetector_create('Dense')
-		self.descriptor_extractor_instance = cv2.DescriptorExtractor_create('SIFT')
+class OpenCVAlgorithm(object):
+	def __init__(self, feature_detector_name, descriptor_extractor_name):
+		self.feature_detector_instance = cv2.FeatureDetector_create(feature_detector_name)
+		self.descriptor_extractor_instance = cv2.DescriptorExtractor_create(descriptor_extractor_name)
 
 	def compute(self, image_path):
 		img = cv2.imread(image_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 		kp = self.feature_detector_instance.detect(img)
 		kp, desc = self.descriptor_extractor_instance.compute(img,kp)
-		desc = np.float32(desc)
-		return desc.ravel()
+		return np.float32(desc)
+
+class DSIFT(OpenCVAlgorithm):
+	def __init__(self):
+		super(DSIFT,self).__init__('Dense', 'SIFT')
+
+class SIFT(OpenCVAlgorithm):
+	def __init__(self):
+		super(SIFT,self).__init__('SIFT', 'SIFT')
+
+class SURF(OpenCVAlgorithm):
+	def __init__(self):
+		super(SURF,self).__init__('SURF', 'SURF')
 
 class SVM(object):
 	def __init__(self):
@@ -59,17 +70,31 @@ class GRABED(object):
 		return np.float32(desc)
 
 class BOWImgDescriptorExtractor(object):
-	def __init__(self, extractor, matcher, feature_detector_instance=None):
-		self.feature_detector_instance = feature_detector_instance or cv2.FeatureDetector_create('Dense')
-		self.descriptor_extractor = cv2.BOWImgDescriptorExtractor(extractor, matcher)
+	def __init__(self, descriptor_extractor, descriptor_matcher):
+		self.descriptor_matcher = descriptor_matcher
+		self.descriptor_extractor = descriptor_extractor
 
-	def setVocabulary(visual_dictionary):
-		self.descriptor_extractor.setVocabulary(visual_dictionary)
+	def setVocabulary(self, visual_dictionary):
+		self.vocabulary = visual_dictionary
+		print 'add visual_dictionary', visual_dictionary.shape
+		# TODO: Why the hell this doesnt work? trainIdx is wrong if we do that
+		#self.descriptor_matcher.add(visual_dictionary)
 
 	def compute(self, img_path):
-		img = cv2.imread(img_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+		desc = self.descriptor_extractor.compute(img_path)
+		print desc.shape
+		output_descriptors = self._compute(desc)
+		return np.float32(output_descriptors)
 
-		kp = self.feature_detector_instance.detect(img)
-		desc = classifier_descriptor_extractor_instance.compute(img, kp)
+	def _compute(self, query_descriptor):
+		cluster_count = self.vocabulary.shape[0]
 
-		return np.float32(desc)
+		matches = self.descriptor_matcher.match(query_descriptor, self.vocabulary)
+		output_descriptor = np.zeros((cluster_count,), dtype=np.float32)
+
+		for i,m in enumerate(matches):
+			assert m.queryIdx == int(i)
+			output_descriptor[m.trainIdx] += float(1.0)
+		# Normalize
+		output_descriptor /= query_descriptor.shape[0]
+		return output_descriptor

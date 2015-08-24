@@ -159,7 +159,7 @@ class Dataset(object):
 		)
 
 from senjo.cache import Cache
-from senjo.algorithms import SVM, SIFT
+from senjo.algorithms import SVM, DSIFT
 import cv2
 import numpy as np
 import os
@@ -170,7 +170,7 @@ class Experiment(object):
 
 	@property
 	def descriptor_extractor(self):
-		return SIFT()
+		return DSIFT()
 
 	def __init__(self, training_dataset=None, test_dataset=None):
 		self.training_dataset = training_dataset

@@ -78,14 +78,11 @@ def gen_ees(max_axis, l0, r):
 	while l <= max_axis:
 		sizes.append(l)
 		l = l*2
-	print 'sizes', sizes
+	#print 'sizes', sizes
 	angles = np.linspace(0,180,r)
-	print 'angles', angles
+	#print 'angles', angles
 
 	return [ (l,a,strel(l,a)) for a in angles for l in sizes ]
-
-for ee in gen_ees(8,2,4):
-	print ee
 
 def default_border_extractor(img):
 	#img = cv2.blur(img,(5,5))
