@@ -76,13 +76,11 @@ class BOWImgDescriptorExtractor(object):
 
 	def setVocabulary(self, visual_dictionary):
 		self.vocabulary = visual_dictionary
-		print 'add visual_dictionary', visual_dictionary.shape
 		# TODO: Why the hell this doesnt work? trainIdx is wrong if we do that
 		#self.descriptor_matcher.add(visual_dictionary)
 
 	def compute(self, img_path):
 		desc = self.descriptor_extractor.compute(img_path)
-		print desc.shape
 		output_descriptors = self._compute(desc)
 		return np.float32(output_descriptors)
 

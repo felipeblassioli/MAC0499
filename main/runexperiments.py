@@ -18,9 +18,9 @@ class DSIFTBOWExperiment(BOWExperiment):
 
 EXPERIMENTS = [
 	#GRABEDExperiment('instance/data/data01', 'instance/data/data01-tr'),
-	#GRABEDExperiment('instance/data/data02', 'instance/data/data02-tr'),
-	SIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr'),
-	DSIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr'),
+	SIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr', name='BOW-SIFT'),
+	DSIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr', name='BOW-DSIFT'),
+	GRABEDExperiment('instance/data/data02', 'instance/data/data02-tr', name='GRABED-1'),
 ]
 
 import logging

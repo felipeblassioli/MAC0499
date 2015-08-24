@@ -172,10 +172,11 @@ class Experiment(object):
 	def descriptor_extractor(self):
 		return DSIFT()
 
-	def __init__(self, training_dataset=None, test_dataset=None):
+	def __init__(self, training_dataset=None, test_dataset=None, name=None):
 		self.training_dataset = training_dataset
 		self.test_dataset = test_dataset
 		self.classifier_file = 'classifier.xml'
+		self.name = name
 
 	def run(self, training_dataset=None, test_dataset=None, name=None, output_dir=None, classifier_file=None):
 		training_dataset = self.load_dataset(training_dataset or self.training_dataset)
