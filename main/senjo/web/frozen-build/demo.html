@@ -1,0 +1,4736 @@
+<html>
+	<head>
+		<title>MAC0499 - Shoe classifiers</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<style media="screen">
+			#container {
+				width: 100%;
+			}
+			.experiment {
+				margin-left: 16px;
+				display: inline-block;
+				width: 49%;
+				vertical-align: top;
+			}
+			.sample-box {
+				width: 25%;
+				display: inline-block;
+			}
+			.predictions-box {
+				margin-bottom: 16px;
+				width: 48%;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.prediction-item {
+				margin-bottom: 8px;
+				display: inline-block;
+			}
+			.prediction-item.right {
+				background-color: green;
+			}
+			.prediction-item.wrong {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+<body>
+
+
+	
+
+
+<div id="container">
+
+	<div class="experiment">
+		<h1>result-BOW-DSIFT.json</h1>
+
+		<div style="width: 60%; display: inline-block;">
+			<table class="table table-bordered">
+				<tr>
+					<th>Algorithm Name</th>
+					<td>BOW-DSIFT</td>
+				</tr>
+				<tr>
+					<th>Training Dataset</th>
+					<td>instance/data/data02</td>
+				</tr>
+				<tr>
+					<th>Test Dataset</th>
+					<td>instance/data/data02-tr</td>
+				</tr>
+				<tr>
+					<th>Feature Detector</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Clusterizer</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>BOW Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Classifier</th>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<h1>Results</h1>
+
+		<div style="width: 240px; display: inline-block;">
+			<h3>Class Map</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Index</th>
+						<th>Label</th>
+						<th>total</th>
+					</tr>
+				</thead>
+			
+				<tr>
+					<td>01</td>
+					<td>Chuteira</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>03</td>
+					<td>Chinelo</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>02</td>
+					<td>Bota</td>
+					<td>40</td>
+				</tr>
+			
+			</table>
+		</div>
+
+		<div style="width: 300px; display: inline-block;">
+			<h3>Confusion Matrix</h3>
+			<table class="table table-bordered">
+			
+				<tr>
+				
+					<td> 17 </td>
+				
+					<td> 0 </td>
+				
+					<td> 23 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 2 </td>
+				
+					<td> 37 </td>
+				
+					<td> 1 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 0 </td>
+				
+					<td> 0 </td>
+				
+					<td> 40 </td>
+				
+				</tr>
+			
+			</table>
+		</div>
+
+		<br />
+
+		
+			<div class="sample-box">
+				<h2>label 2.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>37 true positives</td>
+						<td>0 false positives</td>
+					</tr>
+					<tr>
+						<td>3 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 100.00%
+				<strong>Recall:</strong> 92.50%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.9625</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.961038961039</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.075</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>1.0</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.927612589543</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.0</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>1.0</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.0</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.93023255814</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.925</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3453-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3483-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4123-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0269-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3166-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0944-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-7250-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-793_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1241-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0268-398_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8345-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-784_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6343-846_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-266_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5148-202_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8373-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/117-0124-016_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 1.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>17 true positives</td>
+						<td>2 false positives</td>
+					</tr>
+					<tr>
+						<td>23 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 89.47%
+				<strong>Recall:</strong> 42.50%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.69512195122</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.576271186441</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.575</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.952380952381</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.447082367261</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.105263157895</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.894736842105</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.047619047619</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.634920634921</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.425</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0484-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0919-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0550-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0912-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-450_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0903-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-114_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0475-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-954_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-387_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-058_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 3.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>40 true positives</td>
+						<td>24 false positives</td>
+					</tr>
+					<tr>
+						<td>0 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 62.50%
+				<strong>Recall:</strong> 100.00%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.769230769231</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.769230769231</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.0</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.625</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.625</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.375</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.625</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.375</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>1.0</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>1.0</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1138-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5992-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6405-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2759-939_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-342_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5832-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-306_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-030_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6346-284_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-216_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-024_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6397-871_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-094_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-080_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-204_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2633-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6394-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-008_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-411_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6391-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-002_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-312_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6345-286_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-2066-034_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-188_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-112_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2865-164_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+
+	</div>
+
+	<div class="experiment">
+		<h1>result-BOW-SIFT.json</h1>
+
+		<div style="width: 60%; display: inline-block;">
+			<table class="table table-bordered">
+				<tr>
+					<th>Algorithm Name</th>
+					<td>BOW-SIFT</td>
+				</tr>
+				<tr>
+					<th>Training Dataset</th>
+					<td>instance/data/data02</td>
+				</tr>
+				<tr>
+					<th>Test Dataset</th>
+					<td>instance/data/data02-tr</td>
+				</tr>
+				<tr>
+					<th>Feature Detector</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Clusterizer</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>BOW Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Classifier</th>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<h1>Results</h1>
+
+		<div style="width: 240px; display: inline-block;">
+			<h3>Class Map</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Index</th>
+						<th>Label</th>
+						<th>total</th>
+					</tr>
+				</thead>
+			
+				<tr>
+					<td>01</td>
+					<td>Chuteira</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>03</td>
+					<td>Chinelo</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>02</td>
+					<td>Bota</td>
+					<td>40</td>
+				</tr>
+			
+			</table>
+		</div>
+
+		<div style="width: 300px; display: inline-block;">
+			<h3>Confusion Matrix</h3>
+			<table class="table table-bordered">
+			
+				<tr>
+				
+					<td> 14 </td>
+				
+					<td> 17 </td>
+				
+					<td> 9 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 8 </td>
+				
+					<td> 23 </td>
+				
+					<td> 9 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 11 </td>
+				
+					<td> 13 </td>
+				
+					<td> 16 </td>
+				
+				</tr>
+			
+			</table>
+		</div>
+
+		<br />
+
+		
+			<div class="sample-box">
+				<h2>label 2.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>23 true positives</td>
+						<td>30 false positives</td>
+					</tr>
+					<tr>
+						<td>17 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 43.40%
+				<strong>Recall:</strong> 57.50%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.572727272727</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.494623655914</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.425</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.571428571429</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.140970901946</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.566037735849</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.433962264151</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.428571428571</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.701754385965</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.575</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3453-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0269-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8373-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0944-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-7250-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-793_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1241-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0268-398_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8345-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-784_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/117-0124-016_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5148-202_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3483-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4123-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3166-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6343-846_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-266_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 1.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>14 true positives</td>
+						<td>19 false positives</td>
+					</tr>
+					<tr>
+						<td>26 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 42.42%
+				<strong>Recall:</strong> 35.00%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.545454545455</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.383561643836</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.65</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.677966101695</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.029111125487</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.575757575758</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.424242424242</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.322033898305</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.606060606061</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.35</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-114_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0475-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-954_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-387_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-058_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0484-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0919-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0903-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0550-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0912-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-450_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 3.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>16 true positives</td>
+						<td>18 false positives</td>
+					</tr>
+					<tr>
+						<td>24 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 47.06%
+				<strong>Recall:</strong> 40.00%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.571428571429</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.432432432432</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.6</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.689655172414</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.0925741849331</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.529411764706</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.470588235294</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.310344827586</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.625</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.4</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1138-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5992-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-094_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-080_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-204_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6394-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6391-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-002_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-312_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6345-286_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-112_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2865-164_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6405-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2759-939_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-342_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5832-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-306_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-030_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6346-284_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-216_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-024_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6397-871_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2633-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-008_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-411_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-2066-034_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-188_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+
+	</div>
+
+	<div class="experiment">
+		<h1>result-GRABED-1.json</h1>
+
+		<div style="width: 60%; display: inline-block;">
+			<table class="table table-bordered">
+				<tr>
+					<th>Algorithm Name</th>
+					<td>GRABED-1</td>
+				</tr>
+				<tr>
+					<th>Training Dataset</th>
+					<td>instance/data/data02</td>
+				</tr>
+				<tr>
+					<th>Test Dataset</th>
+					<td>instance/data/data02-tr</td>
+				</tr>
+				<tr>
+					<th>Feature Detector</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Clusterizer</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>BOW Descriptor</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Classifier</th>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<h1>Results</h1>
+
+		<div style="width: 240px; display: inline-block;">
+			<h3>Class Map</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Index</th>
+						<th>Label</th>
+						<th>total</th>
+					</tr>
+				</thead>
+			
+				<tr>
+					<td>01</td>
+					<td>Chuteira</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>03</td>
+					<td>Chinelo</td>
+					<td>40</td>
+				</tr>
+			
+				<tr>
+					<td>02</td>
+					<td>Bota</td>
+					<td>40</td>
+				</tr>
+			
+			</table>
+		</div>
+
+		<div style="width: 300px; display: inline-block;">
+			<h3>Confusion Matrix</h3>
+			<table class="table table-bordered">
+			
+				<tr>
+				
+					<td> 31 </td>
+				
+					<td> 9 </td>
+				
+					<td> 0 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 5 </td>
+				
+					<td> 34 </td>
+				
+					<td> 1 </td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td> 3 </td>
+				
+					<td> 7 </td>
+				
+					<td> 30 </td>
+				
+				</tr>
+			
+			</table>
+		</div>
+
+		<br />
+
+		
+			<div class="sample-box">
+				<h2>label 2.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>34 true positives</td>
+						<td>16 false positives</td>
+					</tr>
+					<tr>
+						<td>6 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 68.00%
+				<strong>Recall:</strong> 85.00%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.770833333333</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.755555555556</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.15</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.714285714286</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.556876827712</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.32</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.68</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.285714285714</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.869565217391</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.85</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3453-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3483-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4123-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3166-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8975-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-7250-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6602-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0264-793_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1241-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0268-398_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8972-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-2541-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-4128-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8343-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8345-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-784_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5145-010_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-6343-846_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8966-266_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-048_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5735-138_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-1861-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-5148-202_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						2.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8360-264_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0269-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-8373-040_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-006_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-0944-003_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/001-3244-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						2.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/02/117-0124-016_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 1.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>31 true positives</td>
+						<td>8 false positives</td>
+					</tr>
+					<tr>
+						<td>9 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 79.49%
+				<strong>Recall:</strong> 77.50%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.806818181818</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.784810126582</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.225</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.833333333333</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.609764146756</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.205128205128</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.794871794872</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.166666666667</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.816326530612</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.775</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0484-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0919-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-028_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0903-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-114_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0475-318_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0905-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0912-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-387_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-451_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0454-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0914-014_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0907-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-206_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-248_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0913-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0904-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						1.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0911-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-274_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0550-483_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0455-954_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0918-789_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-450_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0910-058_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						1.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/01/004-0456-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+				</div>
+			</div>
+		
+			<div class="sample-box">
+				<h2>label 3.0</h2>
+
+				<h3>Statistics</h3>
+				<table class="table table-bordered">
+					<tr>
+						<td>30 true positives</td>
+						<td>1 false positives</td>
+					</tr>
+					<tr>
+						<td>10 false negatives</td>
+						<td>40 true negatives</td>
+					</tr>
+				</table>
+
+				<strong>Precision:</strong> 96.77%
+				<strong>Recall:</strong> 75.00%
+
+				<table class="table table-bordered">
+					
+						<tr>
+							<th>ACC</th>
+							<td>0.864197530864</td>
+						</tr>
+					
+						<tr>
+							<th>F1</th>
+							<td>0.845070422535</td>
+						</tr>
+					
+						<tr>
+							<th>FNR</th>
+							<td>0.25</td>
+						</tr>
+					
+						<tr>
+							<th>TNR</th>
+							<td>0.975609756098</td>
+						</tr>
+					
+						<tr>
+							<th>MCC</th>
+							<td>0.746378616087</td>
+						</tr>
+					
+						<tr>
+							<th>FDR</th>
+							<td>0.0322580645161</td>
+						</tr>
+					
+						<tr>
+							<th>PPV</th>
+							<td>0.967741935484</td>
+						</tr>
+					
+						<tr>
+							<th>FPR</th>
+							<td>0.0243902439024</td>
+						</tr>
+					
+						<tr>
+							<th>NPV</th>
+							<td>0.8</td>
+						</tr>
+					
+						<tr>
+							<th>TPR</th>
+							<td>0.75</td>
+						</tr>
+					
+				</table>
+
+				<h3>Predictions</h3>
+				<div class="predictions-box">
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-818_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1138-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5992-068_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6402-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6405-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2759-939_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-042_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-342_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5832-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2642-306_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-030_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6346-284_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-216_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-024_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6397-871_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-5890-044_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-080_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-204_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2633-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-008_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-1419-411_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6406-004_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-0131-338_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6404-172_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/117-2066-034_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item right">
+						3.0 vs 3.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2754-188_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+				</div>
+				<div class="predictions-box">
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-094_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6390-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-1403-026_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6394-036_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6391-118_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-002_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-312_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6345-286_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+				
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 2.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-6389-112_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+					
+					<div class="prediction-item wrong">
+						3.0 vs 1.0 <br />
+						<img src="download/instance/data/data02-tr/03/132-2865-164_detalhe1.jpg"
+							style="height: 100px;" />
+					</div>
+					
+				
+				</div>
+			</div>
+		
+
+	</div>
+
+</div>
+
+</body>
+</html>
