@@ -15,6 +15,7 @@ setup(
 		'flask-peewee>=0.6.4',
 		'PyMySQL',
 		'flask-admin',
-		'six'
+		'six',
+		'Frozen-Flask'
 	]
 )

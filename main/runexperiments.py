@@ -1,6 +1,6 @@
 from senjo.experiments import Experiment, BOWExperiment
 
-from senjo.algorithms import GRABED, DSIFT, SIFT, SURF
+from senjo.algorithms import GRABED, DSIFT, SIFT, SURF, QEF
 class GRABEDExperiment(Experiment):
 	@property
 	def descriptor_extractor(self):
@@ -16,11 +16,17 @@ class DSIFTBOWExperiment(BOWExperiment):
 	def descriptor_extractor(self):
 		return DSIFT()
 
+class QEFGRABEDExperiment(Experiment):
+	@property
+	def descriptor_extractor(self):
+		return QEF(GRABED(), shape=(3,1))
+
 EXPERIMENTS = [
 	#GRABEDExperiment('instance/data/data01', 'instance/data/data01-tr'),
 	SIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr', name='BOW-SIFT'),
 	DSIFTBOWExperiment('instance/data/data02', 'instance/data/data02-tr', name='BOW-DSIFT'),
 	GRABEDExperiment('instance/data/data02', 'instance/data/data02-tr', name='GRABED-1'),
+	QEFGRABEDExperiment('instance/data/data02', 'instance/data/data02-tr', name='QEF-GRABED-1'),
 ]
 
 import logging
