@@ -29,7 +29,7 @@ def line2(x0,y0,x1,y1):
 			eps -= dy
 
 def strel(l,d):
-	print l,d
+	#print l,d
 	def _get_rect_shape(l):
 		if l % 2 == 0:
 			l+=1
@@ -72,6 +72,8 @@ print strel(10,120)
 print strel(10,150)
 print strel(10,180)
 '''
+from collections import namedtuple
+EERow = namedtuple('EERow', ['length','angle','matrix'])
 def gen_ees(max_axis, l0, r):
 	sizes = []
 	l = l0
@@ -82,7 +84,7 @@ def gen_ees(max_axis, l0, r):
 	angles = np.linspace(0,180,r)
 	#print 'angles', angles
 
-	return [ (l,a,strel(l,a)) for a in angles for l in sizes ]
+	return [ EERow(l,a,strel(l,a)) for a in angles for l in sizes ]
 
 def default_border_extractor(img):
 	#img = cv2.blur(img,(5,5))
@@ -90,21 +92,23 @@ def default_border_extractor(img):
 	#img = (255-img)
 	return img
 
-def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=default_border_extractor, output_file=None):
-	def _get_ee_families():
-		from collections import defaultdict
-		from operator import itemgetter
+def get_ee_families(max_axis, l0, r):
+	from collections import defaultdict
+	from operator import itemgetter
 
-		EEs = gen_ees(max_axis, l0, r)
-		# Group by angle
-		d = defaultdict(list)
-		for ee in EEs:
-			d[ee[1]].append((ee[0],ee[2]))
-		EE_families = d.items()
-		EE_families.sort(key=itemgetter(0))
-		for a, ee_group in EE_families:
-			ee_group.sort(key=itemgetter(0))
-		return EE_families
+	EEs = gen_ees(max_axis, l0, r)
+	# Group by angle
+	d = defaultdict(list)
+	for ee in EEs:
+		d[ee.angle].append((ee.length,ee.matrix))
+	EE_families = sorted(d.items(), key=itemgetter(0))
+	for a, ee_group in EE_families:
+		# sort by length
+		ee_group.sort(key=itemgetter(0))
+	return EE_families
+
+def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=default_border_extractor, output_file=None):
+
 	#print 'grabed', scales, f, max_axis, l0, r, border_extractor
 	ps = []
 	for s in xrange(1,scales+1):
@@ -115,7 +119,7 @@ def grabed(img, scales=1, f=0.5, max_axis=128, l0=3, r=12, border_extractor=defa
 
 		_vstack = []
 		initial_area = float(initial_area)
-		for a,ee_family in _get_ee_families():
+		for a,ee_family in get_ee_families(max_axis,l0,r):
 			_stack = []
 			_stack.append(borders)
 

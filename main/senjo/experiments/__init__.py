@@ -128,7 +128,7 @@ class ExperimentResultWrapper(object):
 			json.dump(self, fp, cls=DefaultJSONEncoder)
 
 class Dataset(object):
-	def __init__(self, dataset_root_dir, name=None):
+	def __init__(self, dataset_root_dir, name=None, mapping_file='classes_mapping.txt'):
 		import os
 		dataset = []
 		# directory's names are category labels
@@ -139,10 +139,12 @@ class Dataset(object):
 					file_path = os.path.join(category_dir, filename)
 					dataset.append((file_path, [float(category)]))
 
-		mapping_file = os.path.join(dataset_root_dir, 'classes_mapping.txt')
-		with open(mapping_file, 'rb') as fp:
-			self.categories = [ tuple([ x.strip() for x in line.split(' ')]) for line in fp ]
-
+		mapping_file = os.path.join(dataset_root_dir, mapping_file)
+		try:
+			with open(mapping_file, 'rb') as fp:
+				self.categories = [ tuple([ x.strip() for x in line.split(' ')]) for line in fp ]
+		except IOError:
+			self.categories = []
 		self._data = dataset
 		self.name = name or dataset_root_dir
 		logging.debug('dataset length: %d' % len(self._data))
@@ -172,18 +174,19 @@ class Experiment(object):
 	def descriptor_extractor(self):
 		return DSIFT()
 
-	def __init__(self, training_dataset=None, test_dataset=None, name=None):
+	def __init__(self, training_dataset=None, test_dataset=None, name=None, classifier_file=None, output_dir=None):
 		self.training_dataset = training_dataset
 		self.test_dataset = test_dataset
-		self.classifier_file = 'classifier.xml'
 		self.name = name
+		self.classifier_file = classifier_file
+		self.output_dir = output_dir
 
 	def run(self, training_dataset=None, test_dataset=None, name=None, output_dir=None, classifier_file=None):
 		training_dataset = self.load_dataset(training_dataset or self.training_dataset)
 		test_dataset = self.load_dataset(test_dataset or self.test_dataset)
 		name = name or self.name or 'default_experiment_name'
 		output_dir = output_dir or self.output_dir or 'experiments_output'
-		classifier_file = classifier_file or self.classifier_file or 'classifier.xml'
+		classifier_file = classifier_file or self.classifier_file or '%s-classifier.xml' % name
 
 		if not os.path.exists(output_dir):
 			os.makedirs(output_dir)

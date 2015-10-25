@@ -116,7 +116,7 @@ class Cache(object):
 				import json
 				json.dump(self, fp, cls=DefaultJSONEncoder)
 			self._data['keypoints'].serialize()
-			self._data['descriptors'].serialize()
+			self._data['descriptors'].serialize(target_file='%s-descriptors.txt' % self.name)
 		else:
 			logger.info('no changes to be saved.')
 
@@ -132,6 +132,6 @@ class Cache(object):
 			logger.info('new cache at %s' % filepath)
 
 			self._data = dict(
-				descriptors=DescriptorsCacheEntry(root_dir=self.root_dir),
+				descriptors=DescriptorsCacheEntry(root_dir=self.root_dir, filename='%s-descriptors.txt' % self.name),
 				keypoints=KeyPointsCacheEntry(root_dir=self.root_dir)
 			)

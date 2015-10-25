@@ -13,7 +13,7 @@ class BOWExperiment(Experiment):
 	Then uses self.bow_descriptor_extractor(which has setVocabulary) loaded with the visual_dictionary to compute the descriptors that are input to the classifier.
 	"""
 	cluster_count = 8
-	visual_dictionary_file = 'dictionary.txt'
+	visual_dictionary_file = None
 
 	@property
 	def clusterizer(self):
@@ -80,7 +80,8 @@ class BOWExperiment(Experiment):
 		descriptor_extractor_instance = self.descriptor_extractor
 		clusterizer_instance = self.clusterizer
 		bow_descriptor_extractor_instance = self.bow_descriptor_extractor
-		visual_dictionary_file = self.visual_dictionary_file
+		name = self.name or 'default_name'
+		visual_dictionary_file = self.visual_dictionary_file or '%s-dictionary.txt' % self.name
 
 		visual_dictionary = self.build_visual_dictionary(training_dataset, descriptor_extractor_instance, clusterizer_instance, visual_dictionary_file, output_dir)
 		bow_descriptor_extractor_instance.setVocabulary(visual_dictionary)
