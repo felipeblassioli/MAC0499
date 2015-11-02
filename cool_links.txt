@@ -1,0 +1,10 @@
+# The beginning
+http://scipy-lectures.github.io/advanced/image_processing/
+# PyWavelets - Discrete Wavelet Transform in Python
+http://www.pybytes.com/pywavelets/
+http://www.tomgibara.com/computer-vision/haar-wavelet
+
+# Wavelets as Features for Object Recognition
+http://users.utcluj.ro/~atn/papers/ATN_2_2008_5.pdf
+
+http://outlace.com/Simple-Genetic-Algorithm-in-15-lines-of-Python/
