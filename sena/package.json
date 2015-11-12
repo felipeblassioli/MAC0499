@@ -1,0 +1,38 @@
+{
+  "name": "sena",
+  "version": "0.0.0",
+  "description": "MAC0499 - Experiment result UI",
+  "main": "index.js",
+  "scripts": {
+    "start": "watchify -x react -x underscore -x \"material-ui/lib/checkbox\" -x \"material-ui/lib/lists/list-item\" -x \"material-ui/lib/lists/list\" -o build/bundle.js -v -d src/app.js --s Sena",
+    "build-vendor": "browserify -r react -r underscore -r \"material-ui/lib/checkbox\" -r \"material-ui/lib/lists/list-item\" -r \"material-ui/lib/lists/list\" >  build/vendor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipeblassioli/MAC0499.git"
+  },
+  "author": "Felipe Blassioli",
+  "dependencies": {
+    "react": "~0.14.0",
+    "underscore": "~1.8.3",
+    "browserify": "~12.0.1",
+    "watchify": "~3.5.0",
+    "reactify": "~1.1.1",
+    "envify": "~3.4.0",
+    "material-ui": "~0.13.2"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "harmony": true
+        }
+      ],
+      "envify"
+    ]
+  },
+  "devDependencies": {
+    "browserify-global-shim": "~1.0.0"
+  }
+}
