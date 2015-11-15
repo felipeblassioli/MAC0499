@@ -17,8 +17,20 @@ var API = {
 	fetchExperiments: function(){
 		return new Promise(function(resolve, reject){
 			var result = {data: [
-				require('../data/result-bow-grabed'),
-				require('../data/result-grabed')
+				require('../data/result-SVM-000'),
+				require('../data/result-SVM-001'),
+				require('../data/result-SVM-002'),
+				require('../data/result-SVM-003'),
+				require('../data/result-SVM-004'),
+				require('../data/result-SVM-005'),
+				require('../data/result-SVM-006'),
+				require('../data/result-SVM-007'),
+				require('../data/result-SVM-008'),
+				require('../data/result-SVM-009'),
+				require('../data/result-SVM-010'),
+				require('../data/result-SVM-011'),
+				require('../data/result-SVM-012'),
+				require('../data/result-SVM-013')
 			]};
 			resolve(result);
 		});
@@ -448,7 +460,7 @@ var ExperimentView = React.createClass({
 
 		return (
 			<Card initiallyExpanded={true}>
-				<CardTitle title="Details" showExpandableButton={true} />
+				<CardTitle title={this.props.experiment.algorithm_name + " Details"} showExpandableButton={true} />
 				<Tabs expandable={true}>
 					{ _.map( _samplesData, _renderTab ) }
 				</Tabs>
@@ -489,9 +501,19 @@ var ExperimentView = React.createClass({
 			return v;
 		});
 
+		var _subtitle = null;
+		if ( this.props.experiment.extras ){
+			var _extras = this.props.experiment.extras;
+			if( _.isObject( _extras ) && 'annotation' in _extras )
+				_subtitle = _extras.annotation;
+		}
 		return (
 			<Card initiallyExpanded={true}>
-				<CardHeader title={ this.props.experiment.algorithm_name }> </CardHeader>
+				<CardHeader 
+					title={ this.props.experiment.algorithm_name + ' Results' }
+					subtitle={_subtitle}
+					> 
+				</CardHeader>
 				{ this._renderSummary( _samplesData ) }
 				{ this._renderClassOverview( _samplesData ) }
 				{ this._renderResults( _samplesData, _labels ) }
@@ -521,14 +543,14 @@ var App = React.createClass({
 				'ACC': true,
 				'PPV': true,
 				'TPR': true,
-				'F1': false,
-				'FNR': false,
-				'TNR': false,
-				'MCC': false,
-				'FDR': false,
-				'FPR': false,
-				'NPV': false,
-				'TPR': false
+				'F1': true,
+				'FNR': true,
+				'TNR': true,
+				'MCC': true,
+				'FDR': true,
+				'FPR': true,
+				'NPV': true,
+				'TPR': true
 			}
 		};
 	},
@@ -536,11 +558,33 @@ var App = React.createClass({
 	_renderExperiment: function( experiment, index ){
 		if( index > 0 )
 			return null;
-		return (
-			<div className={"mdl-cell mdl-cell--8-col"}>
+
+		var _extras = experiment.extras || {};
+		return [
+			<div className={"mdl-cell mdl-cell--10-col"}>
+				<Card initiallyExpanded={true}>			
+					<CardHeader 
+						title={experiment.algorithm_name +" Description"} 
+						showExpandableButton={true}>
+						<div>
+							<strong>Training Dataset: </strong> {experiment.training_dataset.name}<br />
+							<strong>Test Dataset: </strong> {experiment.test_dataset.name}
+						</div>
+					</CardHeader>
+
+					<div className="mdl-grid" expandable={true}>
+					{
+						_.map( _extras, function( v, k ){
+							return <div className="mdl-cell--6-col"><ArrayTable cols={2} data={v.params} title={v.name} /></div>;
+						})
+					}
+					</div>
+				</Card>
+			</div>,
+			<div className={"mdl-cell mdl-cell--10-col"}>
 				<ExperimentView experiment={ experiment } />			
 			</div>
-		);
+		];
 	},
 
 	_changeMode: function( mode ){
@@ -555,10 +599,18 @@ var App = React.createClass({
 			that.setState({ selectedIndex: index });
 		};
 
+		var _conditionalMenu = null;
+		if( this.state.mode === 'details')
+			_conditionalMenu = [
+				<h6>Experiments</h6>,
+				_.map( this.state.experiments, function( e, index ){
+					return <MenuItem key={'menuItem'+index} index={2 + index} leftIcon={<ArrowDropRight />} onClick={_onExperimentClick.bind( this, index )}>{ e.algorithm_name }</MenuItem>
+				})
+
+			];
 		return (
 			<LeftNav 
 				ref="leftNav" 
-				className="mdl-layout__drawer"
 				header={_menuHeader} >
 				
 				<h6>Tools</h6>
@@ -566,14 +618,7 @@ var App = React.createClass({
 				<MenuItem index={0} leftIcon={<FontIcon className="material-icons">visibility</FontIcon>} onClick={this._changeMode.bind(this, 'details')}>Details </MenuItem>
 				<MenuItem index={1} leftIcon={<FontIcon className="material-icons">assessment</FontIcon>} onClick={this._changeMode.bind(this, 'analysis')}>Analysis </MenuItem>
 
-				<h6>Experiments</h6>
-
-				{
-					_.map( this.state.experiments, function( e, index ){
-						return <MenuItem key={'menuItem'+index} index={2 + index} leftIcon={<ArrowDropRight />} onClick={_onExperimentClick.bind( this, index )}>{ e.algorithm_name }</MenuItem>
-					})
-
-				}
+				{ _conditionalMenu }
 
 			</LeftNav>
 		);
@@ -601,11 +646,10 @@ var App = React.createClass({
 			var _isVisible = this.state.isVisible;
 			var options = _.keys( _isVisible );
 			var _visibleOptions = _.filter( options, function( k ){ return _isVisible[ k ]; } ); 
-			console.log('_visibleOptions', _visibleOptions);
 			var _lineData = _.map( _visibleOptions, function( opt ){
 				return {
 					name: opt,
-					values: _.map( mainData, function( e, index ){ return { x: index * 0.2, y: e.statistics[opt] }; } )
+					values: _.map( mainData, function( e, index ){ return { x: index * 0.1, y: e.statistics[opt] }; } )
 				};
 			});
 
@@ -614,8 +658,20 @@ var App = React.createClass({
 				this.forceUpdate();
 			}.bind(this);
 
-			_content = (
-				<div className={"mdl-cell mdl-cell--8-col"}>
+			var _tableData = _.map( this.state.experiments, function( e ){ 
+				var _tmp = _.map( e.samples, _.property('statistics') );
+				return [ e.algorithm_name, _.values( _.meanObject( _tmp ) ) ] 
+			}); 
+			_tableData = _.object( _tableData );
+			_columnLabels = [""].concat( _.keys( _.values( this.state.experiments[0].samples)[0].statistics ) );
+			_content = [
+				<div className={"mdl-cell mdl-cell--10-col"}>
+					<Card initiallyExpanded={true}> 
+						<MaxMinTable columnLabels={_columnLabels} data={_tableData} />
+					</Card>
+				</div>
+				,
+				<div className={"mdl-cell mdl-cell--10-col"}>
 					<Card initiallyExpanded={true}> 
 						<div className="mdl-grid">
 							<div className="mdl-cell mdl-cell--2-col">
@@ -631,24 +687,25 @@ var App = React.createClass({
 								</List>
 							</div>
 
-							<div className="mdl-cell mdl-cell--8-col">
+							<div className="mdl-cell mdl-cell--8-col" style={{paddingBottom: "1em"}}>
 								<LineChart
 									title="Statistics"
 									legend={true}
 									data={_lineData}
 									circleRadius={6}
-									width={900}
-									height={800}
+									width={1000}
+									height={700}
 									gridHorizontal={true} />
 							</div>
 						</div>
 					</Card>
 				</div>
-			);
+			];
+
 		}
 		return (
 			<main className={"mdl-layout__content mdl-color--grey-100"}>
-				<div className={"mdl-grid"}>
+				<div className={"mdl-grid"} style={{justifyContent: 'center'}}>
 					{ _content }
 				</div>
 			</main>
@@ -656,19 +713,22 @@ var App = React.createClass({
 	},
 
 	render: function(){
-		var _menuItems = [
-			{ text: "Components", route: "bla" },
-			{ text: "Components", route: "bla" }
-		];
 		console.log('experiments', this.state.experiments);
 		console.log('App.render', this.state);
 		console.log('current mode is', this.state.mode);
-		var _currentTitle = this.state.mode === 'details'? 'Experiment Details' : 'Experiment Analysis';
+		var _currentTitle = 'Experiment Analysis';
+		if( this.state.mode === 'details' ){
+			if( this.state.experiments.length > 0 )
+				_currentTitle = 'Experiment ' + this.state.experiments[ this.state.selectedIndex ].algorithm_name;
+			else
+				_currentTitle = 'Experiment';
+		}
+
 		return (
 			<div className="mdl-layout__container">
 			<div className={"mdl-layout mdl-layout--fixed-drawer mdl-layout--fixed-header has-drawer is-upgraded"}>
-				<header className={"mdl-layout__header"}>
-					<div className={"mdl-layout__header-row mdl-color--grey-100 mdl-color-text--grey-600 is-casting-shadow"}>
+				<header className="mdl-layout__header">
+					<div className="mdl-layout__header-row" style={{background: "#2A7EA7", color: "white"}}>
 						<span className={"mdl-layout-title"}>
 							{ _currentTitle }
 						</span>
