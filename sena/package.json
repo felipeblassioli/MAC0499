@@ -4,8 +4,8 @@
   "description": "MAC0499 - Experiment result UI",
   "main": "index.js",
   "scripts": {
-    "start": "watchify -x react -x underscore -x \"material-ui/lib/checkbox\" -x \"material-ui/lib/lists/list-item\" -x \"material-ui/lib/lists/list\" -o build/bundle.js -v -d src/app.js --s Sena",
-    "build-vendor": "browserify -r react -r underscore -r \"material-ui/lib/checkbox\" -r \"material-ui/lib/lists/list-item\" -r \"material-ui/lib/lists/list\" >  build/vendor.js"
+    "start": "watchify -o build/bundle.js -v -d src/app.js --s Sena",
+    "build-vendor": "browserify -r babel-polyfill -r \"material-ui/lib/table/table\" -r \"material-ui/lib/table/table-row\" -r \"material-ui/lib/table/table-header\" -r \"material-ui/lib/table/table-row-column\" -r \"material-ui/lib/table/table-header-column\" -r \"material-ui/lib/table/table-body\" -r react -r reflux -r bluebird -r underscore -r \"material-ui/lib/card/card\" -r \"material-ui/lib/card/card-header\" -r \"material-ui/lib/card/card-title\" -r \"material-ui/lib/checkbox\" -r \"material-ui/lib/lists/list-item\" -r \"material-ui/lib/lists/list\" >  build/vendor.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,12 @@
     "watchify": "~3.5.0",
     "reactify": "~1.1.1",
     "envify": "~3.4.0",
-    "material-ui": "~0.13.2"
+    "material-ui": "~0.13.2",
+    "bluebird": "~3.0.5",
+    "reflux": "~0.3.0",
+    "babel-polyfill": "~6.1.4",
+    "react-tap-event-plugin": "~0.2.1",
+    "react-d3": "~0.4.0"
   },
   "browserify": {
     "transform": [
