@@ -249,7 +249,7 @@ class Experiment(object):
 		_cache = Cache(name=name, root_dir=cache_dir) if cache_dir is not None and name is not None else None
 		_samples = []
 		for img_path, _ in test_dataset:
-			print img_path
+			#print img_path
 			if _cache is not None:
 				if _cache['descriptors'][img_path] is None:
 					logger.debug('extracting descriptors for %s' % img_path)
@@ -268,6 +268,12 @@ class Experiment(object):
 		return (samples, labels)
 
 	def make_result(self, name, training_dataset, test_dataset, samples, labels, predictions, extras=None):
+		extras = {}
+		if hasattr( self.classifier, 'to_json' ):
+			extras['classifier'] = self.classifier.to_json()
+		if hasattr( self.descriptor_extractor, 'to_json' ):
+			extras['descriptor_extractor'] = self.descriptor_extractor.to_json()
+			
 		return ExperimentResultWrapper(name, training_dataset, test_dataset, samples, labels, predictions, extras)
 
 	def load_dataset(self, dataset_root_dir):

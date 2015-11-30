@@ -29,7 +29,7 @@ def line2(x0,y0,x1,y1):
 			eps -= dy
 
 def strel(l,d):
-	#print l,d
+	print 'strel(',l,',',d,')'
 	def _get_rect_shape(l):
 		if l % 2 == 0:
 			l+=1

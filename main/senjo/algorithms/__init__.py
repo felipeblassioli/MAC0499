@@ -37,13 +37,13 @@ class SURF(OpenCVAlgorithm):
 		super(SURF,self).__init__('SURF', 'SURF')
 
 class SVM(object):
-	def __init__(self):
+	def __init__(self, C=1, gamma=0.5):
 		self.svm = cv2.SVM()
 		self.svm_params = dict(
 			kernel_type = cv2.SVM_RBF,
 			svm_type = cv2.SVM_C_SVC,
-			C=1,
-			gamma=0.5
+			C=C,
+			gamma=gamma
 		)
 
 	def train(self, training_data, labels):
@@ -62,7 +62,7 @@ class SVM(object):
 		return self.svm.predict_all(*args, **kwargs)
 
 	def to_json(self):
-		return dict(params=self.svm_params)
+		return dict(name='SVM', params=self.svm_params)
 
 from grabed import grabed, default_border_extractor
 class GRABED(BaseDescriptorExtractor):
@@ -78,6 +78,18 @@ class GRABED(BaseDescriptorExtractor):
 	def _compute(self, img):
 		desc = grabed(img, self.scales, self.f, self.max_axis, self.l0, self.r, self.border_extractor, self.output_file)
 		return np.float32(desc)
+
+	def to_json(self):
+		return dict(
+			name='GRABED',
+			params=dict(
+				scales=self.scales,
+				f=self.f,
+				max_axis=self.max_axis,
+				l0=self.l0,
+				r=self.r
+			)
+		)
 
 class BOWImgDescriptorExtractor(object):
 	def __init__(self, descriptor_extractor, descriptor_matcher):

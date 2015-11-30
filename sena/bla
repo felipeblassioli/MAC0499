@@ -1,0 +1,38 @@
+\begin{minted}{bash}
+data/
+├── data01/
+│ ├── 01/
+│ │ ├── 001-0007-138_detalhe1.jpg
+│ │ ├── 001-0019-012_detalhe1.jpg
+│ │ ├── 001-0122-240_detalhe1.jpg
+│ └── 02/
+│     ├── 004-0250-394_detalhe1.jpg
+│     ├── 004-0411-028_detalhe1.jpg
+│     ├── 004-0411-056_detalhe1.jpg
+├── data01-tr/
+ ├── 01/
+ │ ├── 001-0007-138_detalhe1.jpg
+ │ ├── 001-0019-012_detalhe1.jpg
+ ├── 001-0122-240_detalhe1.jpg
+  └── 02/
+      ├── A46-0406-034_detalhe1.jpg
+      ├── A52-0005-266_detalhe1.jpg
+      └── A52-0005-810_detalhe1.jpg
+      
+experiments/
+├── result-SVM-000.json
+├── result-SVM-001.json
+├── result-SVM-002.json
+├── result-SVM-003.json
+├── result-SVM-004.json
+├── result-SVM-005.json
+├── result-SVM-006.json
+├── result-SVM-007.json
+├── result-SVM-008.json
+├── result-SVM-009.json
+├── result-SVM-010.json
+├── result-SVM-011.json
+├── result-SVM-012.json
+└── result-SVM-013.json
+\end{minted}
+
