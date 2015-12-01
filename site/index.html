@@ -1,115 +1,211 @@
 <html>
 	<head>
-		<title>MAC0499 - Classificação refinada aplicada a calçados</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<title>MAC0499 - Uma framework para a classifica;'ao de objetos</title>
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<script src="lib/js/pdf.js"></script>
+		<style>
+			#box-pdf {
+				width: 80%;
+				margin: 16px auto;
+			}
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+			#the-canvas{
+				display: block;
+				margin: 0 auto;
+			}
+
+			#control{
+
+				text-align: center;
+				height: 32px;
+				margin: 0 auto;
+			}
+
+			#prev{
+				float: left;
+				height: 32px;
+			}
+
+			#next {
+				float: right;
+				height: 32px;
+			}
+		</style>
 	</head>
 
-	<body class="container-fluid">
+	<body>
+		<!-- The drawer is always open in large screens. The header is always shown,
+		  even in small screens. -->
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+			    mdl-layout--fixed-header">
+		  <header class="mdl-layout__header">
+		    <div class="mdl-layout__header-row">
+			<span class="mdl-layout-title">MAC0499 - Uma framework para a classifica&ccedil;&atilde;o de objetos</span>
+		      <div class="mdl-layout-spacer"></div>
+		    </div>
 
-		<h1>Classificação refinada aplicada a calçados</h1>
+			
+			
+		  </header>
+		  <div class="mdl-layout__drawer">
+		    <span class="mdl-layout-title">IME-USP 2015</span>
+		    <nav class="mdl-navigation">
 
-		<h1>Motivação</h1>
+		      <a class="mdl-navigation__link" href="javascript:void(0)" onclick="changeTo('monografia');">Monografia</a>
+		      <a class="mdl-navigation__link" href="javascript:void(0)" onclick="changeTo('poster');">P&ocirc;ster</a>
+		      <a class="mdl-navigation__link" href="javascript:void(0)" onclick="changeTo('apresentacao');">Apresenta&ccedil;&atilde;o</a>
+                      <a class="mdl-navigation__link" href="demo.html" onclick="changeTo('demonstracao');">Demonstra&ccedil;&atilde;o</a>
+		    </nav>
+		  </div>
+		  <main class="mdl-layout__content">
+		    <div class="page-content">
 
-		<p>O reconhecimento de objetos em bancos de dados de imagens é um problema bastante estudado e com resultados surpreendentes. Em outras palavras, já existem métodos que conseguem reconhecer, por exemplo, que uma imagem de um pássaro é de um pássaro, ou que uma imagem de um cachorro é de um cachorro. Dentre as técnicas usadas para isso, uma das principais envolve a extração de uma grande quantidade de atributos e uma posterior agregação dos atributos em aglomerados chamados sacos de palavras, ou "Bag of Words" (BoW). Recentemente, no grupo de visão computacional do IME, foram propostos duas novas formas de agregação de atributos e um novo descritor baseado em granulometria morfológica. Essas novas técnicas são importantes para uma tarefa que ainda está em franco desenvolvimento, a classificação refinada, ou classificação de objetos de classes que são muito parecidas. Nessa tarefa, estamos interessados em reconhecer não apenas que a imagem é de um cachorro, ou de um pássaro, mas também a raça do cachorro, ou a espécie do pássaro.</p>
-
-		<h1>Objetivos</h1>
-
-		<ul>
-		<li>Levantar o estado da arte atual</li>
-		<li>Estudar, implementar e testar os algoritmos propostos no grupo de visão do IME</li>
-		<li>Estudar, implementar e testar o melhor método do estado dar arte.</li>
-		<li>Comparar os métodos implementados no conjunto de imagens de calçados da NetShoes</li>
-		</ul>
-
-		<h2>Atividades desenvolvidas até o momento</h2>
-
-		<ul>
-		<li>Montagem do banco de imagens da Netshoes</li>
-		<li>Início do trabalho de enriquecimento do banco de imagens com fotos de outros ângulos além dos que existem no banco da Netshoes.</li>
-		</ul>
+			<div id='box-pdf'>
+			<div id="control">
+<button id="prev" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+  <i class="material-icons">chevron_left</i>
+</button>
+<span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+<button id="next" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+  <i class="material-icons">chevron_right</i>
+</button>
+			</div>
+			  <canvas id="the-canvas" style="border:1px solid black"></canvas>
+			</div>
 
 
-		<h2>Cronograma</h2>
+			</div>
+		  </main>
+		</div>
 
-		<table class="table-striped">
-			<tr>
-				<th class='col-md-6'>Atividade</th> 	
-				<th>Feb</th>
-				<th>Mar</th>
-				<th>Abr</th>
-				<th>Mai</th>
-				<th>Jun</th>
-				<th>Jul</th>
-				<th>Ago</th>
-				<th>Set</th>
-				<th>Out</th>
-				<th>Nov</th>
-				<th>Dez</th>
-			</tr>
+		<script>
+		/**
+		   * Get page info from document, resize canvas accordingly, and render page.
+		   * @param num Page number.
+		   */
+		  function renderPage(num) {
+		    pageRendering = true;
+		    // Using promise to fetch the page
+		    pdfDoc.getPage(num).then(function(page) {
+		      var viewport = page.getViewport(scale);
+			console.log('viewport is', viewport);
+		      canvas.height = viewport.height;
+		      canvas.width = viewport.width;
 
-			<tr>
-				<td>Levantar o estado da arte atual</td> 	
-				<td></td>
-				<td></td>
-				<td>x</td><td>x</td>
-				<td></td><td></td><td></td><td></td>
-				<td></td><td></td><td></td>
-			</tr>
+			document.getElementById('control').style.width = viewport.width+'px';
 
-			<tr>
-				<td>Estudar, implementar e testar os algoritmos propostos no grupo de visão do IME</td> 	
-				<td></td>
-				<td></td>
-				<td></td><td></td>
-				<td>x</td><td>x</td><td></td><td></td>
-				<td></td><td></td><td></td>
-			</tr>
+		      // Render PDF page into canvas context
+		      var renderContext = {
+			canvasContext: ctx,
+			viewport: viewport
+		      };
+		      var renderTask = page.render(renderContext);
 
-			<tr>
-				<td>Estudar, implementar e testar o melhor método do estado dar arte.</td> 	
-				<td></td><td></td>
-				<td></td><td></td>
-				<td></td><td>x</td><td>x</td>x<td>x</td>
-				<td></td><td></td><td></td>
-			</tr>
+		      // Wait for rendering to finish
+		      renderTask.promise.then(function () {
+			pageRendering = false;
+			if (pageNumPending !== null) {
+			  // New page rendering is pending
+			  renderPage(pageNumPending);
+			  pageNumPending = null;
+			}
+		      });
+		    });
 
-			<tr>
-				<td>Comparar os métodos implementados no conjunto de imagens de calçados da NetShoes</td> 	
-				<td></td><td></td><td></td><td></td>
-				<td></td><td></td><td></td><td>x</td>
-				<td></td><td></td><td></td>
-			</tr>
+		    // Update page counters
+		    document.getElementById('page_num').textContent = pageNum;
+		  }
 
+			function renderPDF(url){
 				
-			<tr>
-				<td>Monografia e apresentação</td> 	
-				<td></td><td></td><td></td><td></td>
-				<td></td><td></td><td></td><td></td>
-				<td>x</td><td>x</td><td>x</td>
-			</tr>
+				PDFJS.getDocument(url).then(function (pdfDoc_) {
+				    pdfDoc = pdfDoc_;
+				    document.getElementById('page_count').textContent = pdfDoc.numPages;
 
-		</table>
-		
+				    // Initial/first page rendering
+				    renderPage(pageNum);
+				  });
+			}
 
-		<h1>Responsáveis pelo projeto</h1>
+			function changeTo(tabName){
+				console.log('changeTo', tabName);
+				switch(tabName){
+					case "monografia":
+						document.getElementById('control').style.visibility = 'visible'
+						scale = 1.25;
+						renderPDF('data/monografia.pdf');
+						break;
+					case "poster":
+						document.getElementById('control').style.visibility = 'hidden'
+						scale = 0.8;
+						renderPDF('data/poster.pdf');
+						break;
+					case "apresentacao":
+						document.getElementById('control').style.visibility = 'visible'
+						scale = 2;
+						renderPDF('data/apresentacao.pdf');
+						break;
+					case "demonstracao":
+						break;
+					default:
+				}
+			}
+		</script>
+		<script id="script">
+		  var url = 'data/poster.pdf';
 
-		Aluno: Felipe Anez de Toledo Blassioli <br/>
-		Professor: Roberto Hirata Junior
+		  PDFJS.disableWorker = true;
 
+		  var pdfDoc = null,
+		      pageNum = 1,
+		      pageRendering = false,
+		      pageNumPending = null,
+		      scale = 1,
+		      canvas = document.getElementById('the-canvas'),
+		      ctx = canvas.getContext('2d');
+
+
+		  /**
+		   * If another page rendering in progress, waits until the rendering is
+		   * finised. Otherwise, executes rendering immediately.
+		   */
+		  function queueRenderPage(num) {
+		    if (pageRendering) {
+		      pageNumPending = num;
+		    } else {
+		      renderPage(num);
+		    }
+		  }
+
+		  /**
+		   * Displays previous page.
+		   */
+		  function onPrevPage() {
+		    if (pageNum <= 1) {
+		      return;
+		    }
+		    pageNum--;
+		    queueRenderPage(pageNum);
+		  }
+		  document.getElementById('prev').addEventListener('click', onPrevPage);
+
+		  /**
+		   * Displays next page.
+		   */
+		  function onNextPage() {
+		    if (pageNum >= pdfDoc.numPages) {
+		      return;
+		    }
+		    pageNum++;
+		    queueRenderPage(pageNum);
+		  }
+		  document.getElementById('next').addEventListener('click', onNextPage);
+
+		changeTo('poster');
+		</script>
 
 	</body>
 </html>
- 
-
-
-
-
-
-
