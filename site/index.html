@@ -18,19 +18,24 @@
 			}
 
 			#control{
-
+				padding-top: 8px;
 				text-align: center;
-				height: 32px;
+				height: 40px;
 				margin: 0 auto;
 			}
 
-			#prev{
+			#download{
 				float: left;
 				height: 32px;
 			}
 
+			#prev{
+				
+				height: 32px;
+			}
+
 			#next {
-				float: right;
+				
 				height: 32px;
 			}
 		</style>
@@ -64,12 +69,17 @@
 		    <div class="page-content">
 
 			<div id='box-pdf'>
-			<div id="control">
-<button id="prev" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+			<div id="control" class="mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+
+			<a id="download" title="Download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+			<i class="material-icons">file_download</i>
+			</a>
+
+<button id="prev" title="prev" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
   <i class="material-icons">chevron_left</i>
 </button>
-<span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-<button id="next" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+<span id="page_num"></span> / <span id="page_count"></span>
+<button id="next" title="next" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
   <i class="material-icons">chevron_right</i>
 </button>
 			</div>
@@ -131,27 +141,27 @@
 			}
 
 			function changeTo(tabName){
+				currentTabName = tabName;
 				console.log('changeTo', tabName);
 				switch(tabName){
 					case "monografia":
-						document.getElementById('control').style.visibility = 'visible'
+						downloadUrl = 'data/monografia.pdf';
 						scale = 1.25;
-						renderPDF('data/monografia.pdf');
 						break;
 					case "poster":
-						document.getElementById('control').style.visibility = 'hidden'
 						scale = 0.8;
-						renderPDF('data/poster.pdf');
+						downloadUrl = 'data/poster.pdf';
 						break;
 					case "apresentacao":
-						document.getElementById('control').style.visibility = 'visible'
 						scale = 2;
-						renderPDF('data/apresentacao.pdf');
+						downloadUrl = 'data/apresentacao.pdf';
 						break;
 					case "demonstracao":
 						break;
 					default:
 				}
+				document.getElementById('download').href = downloadUrl;
+				renderPDF(downloadUrl);
 			}
 		</script>
 		<script id="script">
